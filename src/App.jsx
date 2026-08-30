@@ -32,8 +32,10 @@ export default function App() {
   const [lastSyncTime, setLastSyncTime] = useState("");
   const [dataSource, setDataSource] = useState("google_sheet");
 
-  // Gemini API Key (stored in localStorage)
-  const [apiKey, setApiKey] = useState(() => localStorage.getItem("gemini_api_key") || "");
+  // Gemini API Key (stored in localStorage or fallback to environment variable)
+  const [apiKey, setApiKey] = useState(
+    () => localStorage.getItem("gemini_api_key") || import.meta.env.VITE_GEMINI_API_KEY || ""
+  );
 
   // Drawers & batch operation
   const [noticeDrawerCompany, setNoticeDrawerCompany] = useState(null);
