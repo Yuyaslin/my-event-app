@@ -202,21 +202,21 @@ export default function RegistrationTableView({
         </div>
       </div>
 
-      {/* Main Table Container (Zero Line-breaks, Spacious B2B SaaS Layout) */}
+      {/* Main Table Container (Balanced, Evenly-spaced, Clean B2B Layout) */}
       <div className="overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs border-collapse min-w-[980px]">
+          <table className="w-full text-left text-xs border-collapse min-w-[1020px]">
             <thead>
               <tr className="bg-slate-950/90 border-b border-slate-800 text-slate-400 font-semibold tracking-wider uppercase text-[11px]">
-                <th className="py-3.5 px-4 whitespace-nowrap min-w-[200px]">企業名稱與編號</th>
-                <th className="py-3.5 px-4 whitespace-nowrap min-w-[160px]">聯絡窗口</th>
-                <th className="py-3.5 px-4 whitespace-nowrap text-center min-w-[110px]">員工人數</th>
-                <th className="py-3.5 px-4 whitespace-nowrap text-center min-w-[120px]">文件齊全度</th>
-                <th className="py-3.5 px-4 whitespace-nowrap min-w-[160px]">缺件說明</th>
-                <th className="py-3.5 px-4 whitespace-nowrap text-center min-w-[110px]">審核狀態</th>
-                <th className="py-3.5 px-4 whitespace-nowrap min-w-[240px]">AI 審查判定與依據</th>
-                <th className="py-3.5 px-4 whitespace-nowrap text-center min-w-[100px]">補件通知</th>
-                <th className="py-3.5 px-4 whitespace-nowrap text-right min-w-[140px]">操作</th>
+                <th className="py-3 px-3.5 whitespace-nowrap w-[18%]">企業名稱與編號</th>
+                <th className="py-3 px-3.5 whitespace-nowrap w-[16%]">聯絡窗口</th>
+                <th className="py-3 px-3 whitespace-nowrap text-center w-[8%]">員工人數</th>
+                <th className="py-3 px-3 whitespace-nowrap text-center w-[10%]">文件齊全度</th>
+                <th className="py-3 px-3 whitespace-nowrap w-[12%]">缺件說明</th>
+                <th className="py-3 px-3 whitespace-nowrap text-center w-[9%]">審核狀態</th>
+                <th className="py-3 px-3.5 whitespace-nowrap w-[18%]">AI 審查判定與依據</th>
+                <th className="py-3 px-3 whitespace-nowrap text-center w-[8%]">補件通知</th>
+                <th className="py-3 px-3.5 whitespace-nowrap text-center w-[9%]">操作</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/70 text-slate-200">
@@ -233,7 +233,7 @@ export default function RegistrationTableView({
                   return (
                     <tr key={item.id} className="hover:bg-slate-800/40 transition">
                       {/* Name & ID */}
-                      <td className="py-3.5 px-4 whitespace-nowrap min-w-[200px]">
+                      <td className="py-3 px-3.5 whitespace-nowrap">
                         <div className="font-bold text-slate-100 text-xs tracking-tight">
                           {item.name}
                         </div>
@@ -243,8 +243,8 @@ export default function RegistrationTableView({
                       </td>
 
                       {/* Contact */}
-                      <td className="py-3.5 px-4 whitespace-nowrap min-w-[170px]">
-                        <div className="text-slate-200 font-medium">{item.contact}</div>
+                      <td className="py-3 px-3.5 whitespace-nowrap">
+                        <div className="text-slate-200 font-medium text-xs">{item.contact}</div>
                         <div className="text-[11px] text-slate-400 font-mono mt-0.5">
                           {item.email}
                         </div>
@@ -256,8 +256,8 @@ export default function RegistrationTableView({
                         )}
                       </td>
 
-                      {/* Employees (Clean single line, no jumping text) */}
-                      <td className="py-3.5 px-4 whitespace-nowrap text-center min-w-[110px]">
+                      {/* Employees */}
+                      <td className="py-3 px-3 whitespace-nowrap text-center">
                         <span className="font-mono font-bold text-slate-100 text-xs">
                           {Number(item.employees).toLocaleString()}
                         </span>
@@ -265,9 +265,9 @@ export default function RegistrationTableView({
                       </td>
 
                       {/* Completeness Bar */}
-                      <td className="py-3.5 px-4 whitespace-nowrap text-center min-w-[120px]">
+                      <td className="py-3 px-3 whitespace-nowrap text-center">
                         <div className="flex items-center justify-center gap-2">
-                          <div className="w-14 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                          <div className="w-12 h-1.5 rounded-full bg-slate-800 overflow-hidden">
                             <div
                               className={`h-full rounded-full transition-all duration-300 ${
                                 completenessPct === 100 ? "bg-emerald-400" : "bg-amber-400"
@@ -275,30 +275,30 @@ export default function RegistrationTableView({
                               style={{ width: `${completenessPct}%` }}
                             />
                           </div>
-                          <span className="font-mono text-xs font-semibold text-slate-300">
+                          <span className="font-mono text-[11px] font-semibold text-slate-300">
                             {completenessPct}%
                           </span>
                         </div>
                       </td>
 
-                      {/* Missing Doc Tag (Horizontal spacious tag) */}
-                      <td className="py-3.5 px-4 whitespace-nowrap min-w-[160px]">
+                      {/* Missing Doc Tag */}
+                      <td className="py-3 px-3 whitespace-nowrap">
                         {item.missingDoc === "無" || !item.missingDoc ? (
                           <span className="text-slate-500 text-xs inline-flex items-center gap-1.5">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                             文件齊全
                           </span>
                         ) : (
-                          <span className="inline-block whitespace-nowrap px-2.5 py-1 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 text-xs font-medium">
+                          <span className="inline-block whitespace-nowrap px-2.5 py-0.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 text-xs font-medium">
                             {item.missingDoc}
                           </span>
                         )}
                       </td>
 
-                      {/* Status (Horizontal Pill Badge) */}
-                      <td className="py-3.5 px-4 whitespace-nowrap text-center min-w-[110px]">
+                      {/* Status */}
+                      <td className="py-3 px-3 whitespace-nowrap text-center">
                         <span
-                          className={`inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-3 py-1 rounded-full text-xs font-bold border ${
+                          className={`inline-flex items-center justify-center gap-1.5 whitespace-nowrap px-2.5 py-0.5 rounded-full text-xs font-bold border ${
                             item.status === "通過"
                               ? "bg-emerald-500/10 text-emerald-300 border-emerald-500/30"
                               : item.status === "待補件"
@@ -314,8 +314,8 @@ export default function RegistrationTableView({
                       </td>
 
                       {/* AI Reason & Rule */}
-                      <td className="py-3.5 px-4 min-w-[240px] max-w-[300px]">
-                        <div className="text-slate-200 text-xs font-medium truncate" title={item.aiReason}>
+                      <td className="py-3 px-3.5">
+                        <div className="text-slate-200 text-xs font-medium truncate max-w-[220px]" title={item.aiReason}>
                           {item.aiReason || "待審核"}
                         </div>
                         <div className="text-[10px] text-indigo-400 font-mono mt-0.5 whitespace-nowrap">
@@ -323,32 +323,32 @@ export default function RegistrationTableView({
                         </div>
                       </td>
 
-                      {/* Notice Dispatch Toggle (Horizontal Pill) */}
-                      <td className="py-3.5 px-4 whitespace-nowrap text-center min-w-[100px]">
+                      {/* Notice Dispatch Toggle */}
+                      <td className="py-3 px-3 whitespace-nowrap text-center">
                         <button
                           onClick={() => onToggleNoticeSent(item.id)}
-                          className={`inline-block whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                          className={`inline-block whitespace-nowrap px-2 py-0.5 rounded-md text-xs font-medium transition cursor-pointer ${
                             item.noticeSent
                               ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20"
                               : "bg-slate-800 text-slate-400 border border-slate-700 hover:text-slate-200"
                           }`}
-                          title="點擊可手動切換通知狀態"
+                          title="點擊可切換通知狀態"
                         >
                           {item.noticeSent ? "✓ 已發送" : "未發送"}
                         </button>
                       </td>
 
-                      {/* Actions */}
-                      <td className="py-3.5 px-4 text-right whitespace-nowrap min-w-[140px]">
-                        <div className="flex items-center justify-end gap-2">
+                      {/* Actions (Centered and neatly balanced) */}
+                      <td className="py-3 px-3.5 text-center whitespace-nowrap">
+                        <div className="flex items-center justify-center gap-1.5">
                           {/* Happy Path: Generate Missing Notice Drawer */}
                           {item.status === "待補件" && (
                             <button
                               onClick={() => onOpenNoticeDrawer(item)}
-                              className="whitespace-nowrap px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold inline-flex items-center gap-1.5 transition shadow-sm"
+                              className="whitespace-nowrap px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold inline-flex items-center gap-1 transition shadow-sm"
                               title="開啟右側 AI 補件通知草稿 Drawer"
                             >
-                              <Send className="w-3.5 h-3.5" />
+                              <Send className="w-3 h-3" />
                               <span>產生補件通知</span>
                             </button>
                           )}
@@ -356,7 +356,7 @@ export default function RegistrationTableView({
                           {/* Quick AI Audit trigger */}
                           <button
                             onClick={() => onOpenAuditSingle(item)}
-                            className="p-2 rounded-xl bg-slate-800 hover:bg-indigo-600/30 text-slate-400 hover:text-indigo-300 border border-slate-700 transition"
+                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-indigo-600/30 text-slate-400 hover:text-indigo-300 border border-slate-700 transition inline-flex items-center justify-center"
                             title="前往 AI 審核台"
                           >
                             <Sparkles className="w-3.5 h-3.5" />
