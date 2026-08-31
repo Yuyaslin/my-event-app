@@ -5,7 +5,7 @@ export const EVENT_INFO = {
   enTag: "EventOps AI",
   organizer: "教育部體育署 / 企業健康促進推動小組",
   deadline: "2026-03-31",
-  targetCount: 20,
+  targetCount: 50,
   status: "報名審查中",
   description: "推動全台企業建立職場運動風氣與健康管理機制之年度重點賽事。",
 };

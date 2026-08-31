@@ -29,7 +29,7 @@ export default function DashboardView({
   const totalEmployees = registrations.reduce((sum, r) => sum + (Number(r.employees) || 0), 0);
   const unNotifiedMissing = registrations.filter((r) => r.status === "待補件" && !r.noticeSent);
   const passedRate = total > 0 ? Math.round((passed / total) * 100) : 0;
-  const targetProgress = Math.min(100, Math.round((total / EVENT_INFO.targetCount) * 100));
+  const targetProgress = total > 0 ? Math.round((total / EVENT_INFO.targetCount) * 100) : 0;
 
   return (
     <div className="space-y-6 animate-fadeIn">
@@ -149,7 +149,7 @@ export default function DashboardView({
           <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-indigo-500 to-sky-400 rounded-full transition-all duration-500"
-              style={{ width: `${targetProgress}%` }}
+              style={{ width: `${Math.min(100, targetProgress)}%` }}
             />
           </div>
         </div>
