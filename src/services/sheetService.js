@@ -45,6 +45,7 @@ export async function fetchSheetRegistrations(customUrl = null) {
           name: item.name || "未具名企業",
           contact: item.contact || "-",
           email: item.email || "-",
+          phoneExt: item.phoneExt || item.phone || item.tel || item.companyPhone || item.telephone || item["公司電話"] || item["電話"] || "",
           employees: Number(item.employees) || 0,
           submitDate: item.submitDate || new Date().toISOString(),
           docCompleteness: typeof item.docCompleteness === "number" ? item.docCompleteness : 1,

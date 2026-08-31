@@ -56,6 +56,7 @@ export default function RegistrationTableView({
       "企業名稱",
       "聯絡窗口",
       "電子郵件",
+      "公司電話與分機",
       "員工人數",
       "文件完整度",
       "缺件項目",
@@ -69,6 +70,7 @@ export default function RegistrationTableView({
       `"${r.name.replace(/"/g, '""')}"`,
       `"${r.contact}"`,
       r.email,
+      `"${r.phoneExt || "-"}"`,
       r.employees,
       `${Math.round(r.docCompleteness * 100)}%`,
       `"${r.missingDoc}"`,
@@ -241,11 +243,17 @@ export default function RegistrationTableView({
                       </td>
 
                       {/* Contact */}
-                      <td className="py-3.5 px-4 whitespace-nowrap min-w-[160px]">
+                      <td className="py-3.5 px-4 whitespace-nowrap min-w-[170px]">
                         <div className="text-slate-200 font-medium">{item.contact}</div>
                         <div className="text-[11px] text-slate-400 font-mono mt-0.5">
                           {item.email}
                         </div>
+                        {item.phoneExt && (
+                          <div className="text-[10.5px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
+                            <span className="text-indigo-400/90 text-[10px]">☎</span>
+                            <span>{item.phoneExt}</span>
+                          </div>
+                        )}
                       </td>
 
                       {/* Employees (Clean single line, no jumping text) */}
